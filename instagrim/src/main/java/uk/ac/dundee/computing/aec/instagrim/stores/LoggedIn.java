@@ -5,7 +5,9 @@
  */
 
 package uk.ac.dundee.computing.aec.instagrim.stores;
-
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
 /**
  *
  * @author Administrator
@@ -13,6 +15,12 @@ package uk.ac.dundee.computing.aec.instagrim.stores;
 public class LoggedIn {
     boolean logedin=false;
     String Username=null;
+//my code
+    String first_name=null;
+    String last_name=null;
+    Set<String>email=null;
+    String com=null;
+//my code
     public void LogedIn(){
         
     }
@@ -29,6 +37,32 @@ public class LoggedIn {
     public void setLogedout(){
         logedin=false;
     }
+//my code
+    public void setfirst_name(String name){
+        this.first_name=name;
+    }
+    public String getfirst_name(){
+        return first_name;
+    }
+    public void setlast_name(String name){
+        this.last_name=name;
+    }
+    public String getlast_name(){
+        return last_name;
+    }
+    public void setemail(Set<String> email ){
+        this.email=email;
+    }
+    public Set<String> getemail(){
+        return email;
+    }
+    public void setCom(String comment){
+        this.com=comment;
+    }
+    public String getCom(){
+        return com;
+    }
+//my code
     
     public void setLoginState(boolean logedin){
         this.logedin=logedin;

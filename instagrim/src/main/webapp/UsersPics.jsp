@@ -7,24 +7,25 @@
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Instagrim</title>
-        <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
+        <title>instagrim_KJL</title>
+        <link rel="stylesheet" type="text/css" href="/instagrim_KJL/Styles.css" />
     </head>
     <body>
         <header>
         
-        <h1>InstaGrim ! </h1>
+        <h1>instagrim_KJL ! </h1>
         <h2>Your world in Black and White</h2>
         </header>
         
         <nav>
             <ul>
-                <li class="nav"><a href="/Instagrim/upload.jsp">Upload</a></li>
-                <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                <li class="nav"><a href="/instagrim_KJL/upload.jsp">Upload</a></li>
+                <li class="nav"><a href="/instagrim_KJL/Images/majed">Sample Images</a></li>
             </ul>
         </nav>
  
@@ -39,19 +40,26 @@
         } else {
             Iterator<Pic> iterator;
             iterator = lsPics.iterator();
-            while (iterator.hasNext()) {
-                Pic p = (Pic) iterator.next();
+           
+            while (iterator.hasNext()) {     
+          
+               Pic p = (Pic) iterator.next();
 
         %>
-        <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
-
+        <a href="/instagrim_KJL/Image/<%=p.getSUUID()%>" ><img src="/instagrim_KJL/Thumb/<%=p.getSUUID()%>"></a><br/>
+        <a href="/instagrim_KJL/CT?picid=<%=p.getSUUID()%>">CommentList</a><br/>
+        <a href="/instagrim_KJL/Comment.jsp?picid=<%=p.getSUUID()%>">Add Comment</a><br>
+         
+		
+                                                
+            <% 
             }
             }
         %>
         </article>
         <footer>
             <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
+                <li class="footer"><a href="/instagrim_KJL">Home</a></li>
             </ul>
         </footer>
     </body>

@@ -22,12 +22,17 @@ public class Pic {
     public void Pic() {
 
     }
-    public void setUUID(java.util.UUID UUID){
-        this.UUID =UUID;
+    public void setUUID(java.util.UUID id){
+        this.UUID =id;
     }
     public String getSUUID(){
-        return UUID.toString();
+        return this.UUID.toString();
     }
+    /*my code
+    public java.util.UUID getUUID(){
+        return UUID;
+    }
+    my code*/
     public void setPic(ByteBuffer bImage, int length,String type) {
         this.bImage = bImage;
         this.length = length;

@@ -7,8 +7,13 @@
 package uk.ac.dundee.computing.aec.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.models.User;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
@@ -50,9 +56,14 @@ public class Login extends HttpServlet {
         
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        
+
         User us=new User();
         us.setCluster(cluster);
+//my code
+        String first_name=us.First_name(username);
+        String last_name =us.Last_name(username);
+        Set<String> email=us.Email(username);
+//my code
         boolean isValid=us.IsValidUser(username, password);
         HttpSession session=request.getSession();
         System.out.println("Session in servlet "+session);
@@ -60,6 +71,10 @@ public class Login extends HttpServlet {
             LoggedIn lg= new LoggedIn();
             lg.setLogedin();
             lg.setUsername(username);
+            lg.setfirst_name(first_name);
+            lg.setlast_name(last_name);
+            lg.setemail(email);
+            
             //request.setAttribute("LoggedIn", lg);
             
             session.setAttribute("LoggedIn", lg);
@@ -68,7 +83,7 @@ public class Login extends HttpServlet {
 	    rd.forward(request,response);
             
         }else{
-            response.sendRedirect("/Instagrim/login.jsp");
+            response.sendRedirect("/instagrim_KJL/login.jsp");
         }
         
     }

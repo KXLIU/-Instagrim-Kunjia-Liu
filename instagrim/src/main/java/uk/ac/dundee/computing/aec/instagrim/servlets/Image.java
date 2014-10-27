@@ -136,7 +136,7 @@ public class Image extends HttpServlet {
             String username="majed";
             if (lg.getlogedin()){
                 username=lg.getUsername();
-            }
+            }  
             if (i > 0) {
                 byte[] b = new byte[i + 1];
                 is.read(b);
@@ -162,4 +162,4 @@ public class Image extends HttpServlet {
         out.close();
         return;
     }
-}
+} 
