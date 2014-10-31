@@ -12,20 +12,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>instagrim_KJL</title>
-        <link rel="stylesheet" type="text/css" href="/instagrim_KJL/Styles.css" />
+        <title>instagrim</title>
+        <link rel="stylesheet" type="text/css" href="/instagrim/Styles.css" />
     </head>
     <body>
         <header>
         
-        <h1>instagrim_KJL ! </h1>
+        <h1>instagrim ! </h1>
         <h2>Your world in Black and White</h2>
         </header>
         
         <nav>
             <ul>
-                <li class="nav"><a href="/instagrim_KJL/upload.jsp">Upload</a></li>
-                <li class="nav"><a href="/instagrim_KJL/Images/majed">Sample Images</a></li>
+                <li class="nav"><a href="/instagrim/upload.jsp">Upload</a></li>
+                <li class="nav"><a href="/instagrim/Images/majed">Sample Images</a></li>
             </ul>
         </nav>
  
@@ -46,9 +46,9 @@
                Pic p = (Pic) iterator.next();
 
         %>
-        <a href="/instagrim_KJL/Image/<%=p.getSUUID()%>" ><img src="/instagrim_KJL/Thumb/<%=p.getSUUID()%>"></a><br/>
-        <a href="/instagrim_KJL/CT?picid=<%=p.getSUUID()%>">CommentList</a><br/>
-        <a href="/instagrim_KJL/Comment.jsp?picid=<%=p.getSUUID()%>">Add Comment</a><br>
+        <a href="/instagrim/Image/<%=p.getSUUID()%>" ><img src="/instagrim/Thumb/<%=p.getSUUID()%>"></a><br/>
+        <a href="/instagrim/Comment?picid=<%=p.getSUUID()%>">CommentList</a><br/>
+        <a href="/instagrim/Comment.jsp?picid=<%=p.getSUUID()%>">Add Comment</a><br>
          
 		
                                                 
@@ -59,7 +59,7 @@
         </article>
         <footer>
             <ul>
-                <li class="footer"><a href="/instagrim_KJL">Home</a></li>
+                <li class="footer"><a href="/instagrim">Home</a></li>
             </ul>
         </footer>
     </body>

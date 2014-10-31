@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
 	    rd.forward(request,response);
             
         }else{
-            response.sendRedirect("/instagrim_KJL/login.jsp");
+            response.sendRedirect("/instagrim/login.jsp");
         }
         
     }

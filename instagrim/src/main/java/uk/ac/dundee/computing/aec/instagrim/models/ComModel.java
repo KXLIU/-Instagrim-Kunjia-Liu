@@ -29,6 +29,7 @@ import org.imgscalr.Scalr.Method;
 
 import uk.ac.dundee.computing.aec.instagrim.lib.*;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
+import uk.ac.dundee.computing.aec.instagrim.stores.Com;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 //import uk.ac.dundee.computing.aec.stores.TweetStore;
 
@@ -36,26 +37,28 @@ public class ComModel {
 
     Cluster cluster;
 
-public void ComModel() {
 
-    }
 
 public void setCluster(Cluster cluster) {
         this.cluster = cluster;
     }
     
     
-public void insertComment(String comment, java.util.UUID picid ) {
-    	
+public void insertComment(String comment, java.util.UUID picid  ) {
+	
     	try
     	{
-    	        Session session = cluster.connect("instagrim_KJL");
-    	        PreparedStatement ps = session.prepare("insert into Comment (picid, comment) Values(?,?)");
+    			Date Com_time = new Date();
+    			
+    	        Session session = cluster.connect("instagrim");
+    	        
+    	        PreparedStatement ps = session.prepare("insert into UserComment (picid, comment,Com_time) Values(?,?,?)");
     	        
     	        BoundStatement boundStatement = new BoundStatement(ps);
     	        session.execute( 
     	                boundStatement.bind( 
-    	                        picid, comment));
+    	                        picid, comment, Com_time));
+    	        
     	        session.close();
     	}catch (Exception ex) {
             System.out.println("Error --> " + ex);
@@ -65,11 +68,11 @@ public void insertComment(String comment, java.util.UUID picid ) {
  
 
 
-public String UserComment(java.util.UUID pid){//////////have been changeed
+public java.util.LinkedList<Com> UserComment(java.util.UUID pid){//////////have been changed
     
-    String Comment = null;
-	Session session = cluster.connect("instagrim_KJL");
-    PreparedStatement ps = session.prepare("select comment from CommentTable where picid = ?");
+    java.util.LinkedList<Com> Coms = new java.util.LinkedList<>();
+	Session session = cluster.connect("instagrim");
+    PreparedStatement ps = session.prepare("select comment from UserComment where picid = ?");
     ResultSet rs = null;
     BoundStatement boundStatement = new BoundStatement(ps);
     rs = session.execute( // this is where the query is executed
@@ -80,14 +83,17 @@ public String UserComment(java.util.UUID pid){//////////have been changeed
         return null;
     } else {
         for (Row row : rs) {
-           
-            Comment = row.getString("Comment");
+        	 Com c = new Com();
+        	 String com = row.getString("comment");
+        	 c.setCom(com);
+             Coms.add(c);
+             
                           
         }
-        System.out.println("yes");
+        //System.out.println("yes");
         session.close();
-        return Comment;
+        return Coms;
         }
     }
-}
- 
+
+} 

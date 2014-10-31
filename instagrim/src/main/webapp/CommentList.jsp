@@ -16,13 +16,33 @@
 
         <%
         //HttpSession session=request.getSession();
-        LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+        //LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
         //ComModel com = new ComModel();
         //String uid=request.getParameter("picid");
       
         //java.util.UUID pid=java.util.UUID.fromString(uid);
         %>
         
-        Your Comment:<%=lg.getCom() %>
+           <%
+            java.util.LinkedList<Com> com = (java.util.LinkedList<Com>) request.getAttribute("Comment");
+            if (com == null) {
+        %>
+        <p>No Comments found</p>
+        <%
+        } else {
+            Iterator<Com> iterator;
+            iterator = com.iterator();
+           
+            while (iterator.hasNext()) {     
+          
+               Com c = (Com) iterator.next();
+
+        %>
+        <%=c.getCom() %>
+        <br>
+       <%} 
+       }%> 
+       
+        
 </body>
 </html>

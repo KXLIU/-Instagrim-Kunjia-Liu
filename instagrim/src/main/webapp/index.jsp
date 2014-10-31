@@ -11,13 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>instagrim_KJL</title>
+        <title>instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
         <header>
-            <h1>instagrim_KJL ! </h1>
+            <h1>instagrim ! </h1>
             <h2>Your world in Black and White</h2>
         </header>
         <nav>
@@ -34,14 +34,14 @@
                             if (lg.getlogedin()) {
                     %>
 
-                <li><a href="/instagrim_KJL/Images/<%=lg.getUsername()%>">Your Images</a></li>
+                <li><a href="/instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
            
 <!-- my code -->
                 <li><a href="UploadUserPic.jsp">   UploadYourPhoto</a></li>
 				       
             
         <%
-            java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+            java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics1");
             if (lsPics == null) {
         %>
         <p>No Pictures found</p>
@@ -56,12 +56,12 @@
            
            %>
            
-              <li> <a href="/instagrim_KJL/Picture/<%=p.getSUUID()%>" ><img src="/instagrim_KJL/Thumb1/<%=p.getSUUID()%>"></a></li>
+              <li> <a href="/instagrim/Picture/<%=p.getSUUID()%>" ><img src="/instagrim/Thumb1/<%=p.getSUUID()%>"></a></li>
            <%} %>
 <!-- my code -->  
 			<ul>      
                   <!-- log out -->
-                 <li><a href="/instagrim_KJL/LogOut">LogOut</a></li>
+                 <li><a href="/instagrim/LogOut">LogOut</a></li>
                     <%}
                             }else{
                                 %>
@@ -76,13 +76,13 @@
          <br>
          <%=lg.getemail() %>
          <br>
-         <a href="/instagrim_KJL/Pictures/<%=lg.getUsername()%>">Your photo</a>
+         <a href="/instagrim/Pictures/<%=lg.getUsername()%>">Your photo</a>
         
          <%}%>  
        
         <footer>
             <ul>
-                <li class="footer"><a href="/instagrim_KJL">Home</a></li>
+                <li class="footer"><a href="/instagrim">Home</a></li>
                 <li>&COPY; Andy C</li>
             </ul>
         </footer>

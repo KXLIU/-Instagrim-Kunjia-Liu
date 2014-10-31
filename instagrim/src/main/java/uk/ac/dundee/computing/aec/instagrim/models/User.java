@@ -40,7 +40,7 @@ public class User {
     /*public boolean InsertUN(String un)
     {
     	 
-    	 Session session = cluster.connect("instagrim_KJL");
+    	 Session session = cluster.connect("instagrim");
     	 PreparedStatement p = session.prepare("select * from usernamelist where username = un ");
 		 BoundStatement boundStmt = new BoundStatement(p);
     	 session.execute( // this is where the query is executed
@@ -109,7 +109,7 @@ public class User {
             return false;
         }
        // if(InsertUN(username)){
-        Session session = cluster.connect("instagrim_KJL");
+        Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,email) Values(?,?,?,?,?)");
         
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -132,7 +132,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim_KJL");
+        Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select password from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -159,7 +159,7 @@ public class User {
     public String First_name(String username)
     {
     	 String Storedname = null;
-    	Session session = cluster.connect("instagrim_KJL");
+    	Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select first_name from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -182,7 +182,7 @@ public class User {
     public String Last_name(String username)
     {
     	String StoredName = null;
-    	Session session = cluster.connect("instagrim_KJL");
+    	Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select last_name from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -206,7 +206,7 @@ public class User {
     public Set<String> Email(String username)
     {
     	Set<String> Storedname = null;
-    	Session session = cluster.connect("instagrim_KJL");
+    	Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select email from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);

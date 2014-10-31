@@ -14,8 +14,8 @@ public final class Keyspaces {
     public static void SetUpKeySpaces(Cluster c) {
         try {
             //Add some keyspaces here
-            String createkeyspace = "create keyspace if not exists instagrim_KJL WITH replication = {'class':'SimpleStrategy', 'replication_factor':1}";
-            String CreatePicTable = "CREATE TABLE if not exists instagrim_KJL.Pics ("
+            String createkeyspace = "create keyspace if not exists instagrim WITH replication = {'class':'SimpleStrategy', 'replication_factor':1}";
+            String CreatePicTable = "CREATE TABLE if not exists instagrim.Pics ("
                     + " user varchar,"
                     + " picid uuid, "
                     + " interaction_time timestamp,"
@@ -30,14 +30,14 @@ public final class Keyspaces {
                     + " name  varchar,"
                     + " PRIMARY KEY (picid)"
                     + ")";
-            String Createuserpiclist = "CREATE TABLE if not exists instagrim_KJL.userpiclist (\n"
+            String Createuserpiclist = "CREATE TABLE if not exists instagrim.userpiclist (\n"
                     + "picid uuid,\n"
                     + "user varchar,\n"
                     + "pic_added timestamp,\n"
                     + "PRIMARY KEY (user,pic_added)\n"
                     + ") WITH CLUSTERING ORDER BY (pic_added desc);";
 //my code
-            String CreatePhotoTable = "CREATE TABLE if not exists instagrim_KJL.Photo ("
+            String CreatePhotoTable = "CREATE TABLE if not exists instagrim.Photo ("
                     + " user varchar,"
                     + " photoid uuid, "
                     + " interaction_time timestamp,"
@@ -52,29 +52,30 @@ public final class Keyspaces {
                     + " name  varchar,"
                     + " PRIMARY KEY (photoid)"
                     + ")";
-            String Createuserphotolist = "CREATE TABLE if not exists instagrim_KJL.userphotolist (\n"
+            String Createuserphotolist = "CREATE TABLE if not exists instagrim.userphotolist (\n"
                     + "photoid uuid,\n"
                     + "user varchar,\n"
                     + "pic_added timestamp,\n"
                     + "PRIMARY KEY (user,pic_added)\n"
                     + ") WITH CLUSTERING ORDER BY (pic_added desc);";
-            /*String Createusernamelist = "CREATE TABLE if not exists instagrim_KJL.usernamelist (\n"
+            /*String Createusernamelist = "CREATE TABLE if not exists instagrim.usernamelist (\n"
                    
                     + "username text PRIMARY KEY,\n";*/
-            String CreateCommentTable = "CREATE TABLE if not exists instagrim_KJL-KJL.Comment ("
+            String CreateUserCommentTable = "CREATE TABLE if not exists instagrim.UserComment ("
 //                    + " user varchar,"
                     + " picid uuid, "
                     + " comment text,"
-                    + " PRIMARY KEY (picid)"
+                    + " Com_time timestamp,"
+                    + " PRIMARY KEY (picid,Com_time)"
                     + ")";
 
 //my code
-            String CreateAddressType = "CREATE TYPE if not exists instagrim_KJL-KJL.address (\n"
+            String CreateAddressType = "CREATE TYPE if not exists instagrim.address (\n"
                     + "      street text,\n"
                     + "      city text,\n"
                     + "      zip int\n"
                     + "  );";
-            String CreateUserProfile = "CREATE TABLE if not exists instagrim_KJL-KJL.userprofiles (\n"
+            String CreateUserProfile = "CREATE TABLE if not exists instagrim.userprofiles (\n"
                     + "      login text PRIMARY KEY,\n"
                      + "     password text,\n"
                     + "      first_name text,\n"
@@ -90,9 +91,9 @@ public final class Keyspaces {
                         statement);
                 ResultSet rs = session
                         .execute(boundStatement);
-                System.out.println("created instagrim_KJL ");
+                System.out.println("created instagrim ");
             } catch (Exception et) {
-                System.out.println("Can't create instagrim_KJL " + et);
+                System.out.println("Can't create instagrim " + et);
             }
 
             //now add some column families 
@@ -129,9 +130,9 @@ public final class Keyspaces {
                 System.out.println("Can't create user photo list table " + et);
             }
             
-            System.out.println("" + CreateCommentTable);
+            System.out.println("" + CreateUserCommentTable);
             try {
-                SimpleStatement cqlQuery = new SimpleStatement(CreateCommentTable);
+                SimpleStatement cqlQuery = new SimpleStatement(CreateUserCommentTable);
                 session.execute(cqlQuery);
             } catch (Exception et) {
                 System.out.println("Can't create tweet table " + et);

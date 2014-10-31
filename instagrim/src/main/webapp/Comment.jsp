@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-        <h1>instagrim_KJL ! </h1>
+        <h1>instagrim ! </h1>
         <h2>Your world in Black and White</h2>
         </header>
                
@@ -18,7 +18,7 @@
                 <ul>
                     <li>Add your comment <input type="text" name="Comment"></li>
                 </ul>
-                    <input type="hidden" name="picid"  value="<%=request.getParameter("picid")%>"/>
+                    <input type="hidden" name="picid"  value="<%=request.getParameter("picid")%>">
 
                 <br/>
                 <input type="submit" value="SubmitComment"> 

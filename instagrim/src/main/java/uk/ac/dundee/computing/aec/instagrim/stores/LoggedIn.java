@@ -19,7 +19,7 @@ public class LoggedIn {
     String first_name=null;
     String last_name=null;
     Set<String>email=null;
-    String com=null;
+
 //my code
     public void LogedIn(){
         
@@ -56,12 +56,7 @@ public class LoggedIn {
     public Set<String> getemail(){
         return email;
     }
-    public void setCom(String comment){
-        this.com=comment;
-    }
-    public String getCom(){
-        return com;
-    }
+ 
 //my code
     
     public void setLoginState(boolean logedin){

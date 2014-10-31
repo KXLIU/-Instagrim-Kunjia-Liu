@@ -96,7 +96,7 @@ public class Picture extends HttpServlet {
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPhotoForUser(User);
         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-        request.setAttribute("Pics", lsPics);
+        request.setAttribute("Pics1", lsPics);
         rd.forward(request, response);
 
     }

@@ -32,6 +32,7 @@ import uk.ac.dundee.computing.aec.instagrim.lib.Convertors;
 import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
 import uk.ac.dundee.computing.aec.instagrim.models.ComModel;
 import uk.ac.dundee.computing.aec.instagrim.models.User;
+import uk.ac.dundee.computing.aec.instagrim.stores.Com;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
@@ -73,16 +74,35 @@ public class Comment extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-    	/* Pic pc =new Pic();
-    	 
-    	String uid=pc.getSUUID();
-        java.util.UUID pid=java.util.UUID.fromString(uid);
-    		ComModel cm = new ComModel();
-    	System.out.println(	cm.UserComment(pid));*/
     	
+    	 
+         java.util.UUID pid=java.util.UUID.fromString(request.getParameter("picid"));
+         HttpSession session=request.getSession();
+         ComModel c = new ComModel();
+         java.util.LinkedList<Com> Ct = new java.util.LinkedList<>();
+         c.setCluster(cluster);
+         Ct=c.UserComment(pid);
+         
+      /*   Iterator<Com> iterator;
+         iterator = Ct.iterator();
+         PrintWriter out = response.getWriter();
+         while (iterator.hasNext()) {     
+       
+            Com i = (Com) iterator.next();
+
+            out.println(i.getCom());
+         }
+         */
+         request.setAttribute("Comment", Ct);
+
+          RequestDispatcher rd = request.getRequestDispatcher("/CommentList.jsp");
+          rd.forward(request,response);
+        	response.sendRedirect("/instagrim/CommentList.jsp");
         	
      
     }
+
+
 
 
 
@@ -90,42 +110,21 @@ public class Comment extends HttpServlet {
             throws ServletException, IOException {
     	
     	
-        String comment=(String)request.getParameter("Comment");
-        java.util.UUID pid=java.util.UUID.fromString((String)request.getParameter("picid"));///////////add sth
-        //Pic pc = (Pic) session.getAttribute("Pic");
-       // Pic p=new Pic();
-       /* Pic pc =new Pic();
-      pc.setUUID(pid);*/
-        
-        //
-        //ComModel tm = new ComModel();
-        //tm.setCluster(cluster);
-       // String des= tm.getcom(java.util.UUID.fromString(request.getParameter("picid")));
-        
-        //
+        String comment=request.getParameter("Comment");
+        java.util.UUID pid=java.util.UUID.fromString(request.getParameter("picid"));
         ComModel com=new ComModel();
+        //System.out.println(comment);
+        //System.out.println(pid);
         com.setCluster(cluster);
-       // UUID uid=java.util.UUID.fromString(picid);
         
         com.insertComment(comment , pid);
         
-        //Com co= new Com();
-        //co.setComment(comment);
-       
-
-    	//response.sendRedirect("/instagrim_KJL");
-        RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
+       response.sendRedirect("/instagrim/UsersPics.jsp");
 
                 
     }
     
-   /* public String UC(java.util.UUID uid)
-    {
-    	String com=null;
-    	 ComModel c=new ComModel();
-    	 com=c.UserComment(uid);
-    	 return com;
-    }*/
+
    
 
       

@@ -6,18 +6,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>instagrim_KJL</title>
+        <title>instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body>
-        <h1>instagrim_KJL ! </h1>
+        <h1>instagrim ! </h1>
         <h2>Choose one picture as your user photo.</h2>
         <nav>
             <ul>
                <li class="nav"><a href="UploadUserPic.jsp">UploadYourPhoto</a></li>
                 <%LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
               
-               <li><a href="/instagrim_KJL/Pictures/<%=lg.getUsername()%>">Your photo</a></li>
+               <li><a href="/instagrim/Pictures/<%=lg.getUsername()%>">Your photo</a></li>
             </ul>
         </nav>
  
@@ -36,7 +36,7 @@
       <!--  <meta http-equiv="refresh" content="0; url=photo.jsp"> --> 
        <footer>
             <ul>
-                <li class="footer"><a href="/instagrim_KJL">Home</a></li>
+                <li class="footer"><a href="/instagrim">Home</a></li>
             </ul>
         </footer>
        
