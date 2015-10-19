@@ -20,7 +20,8 @@
         <nav>
             <ul>
                 
-                <li><a href="/instagrim/Images/majed">Sample Images</a></li>
+                <li><a href="SamplePics.jsp">Sample Images</a></li>
+                <li><a href="index.jsp">Home</a></li>
             </ul>
         </nav>
        
@@ -30,7 +31,6 @@
                 <ul>
                     <li>User Name <input type="text" name="username"></li>
                     <li>Password <input type="password" name="password"></li>
-<!-- my code -->
                     <li>first_name <input type="text" name="first_name"></li>
                     <li>last_name <input type="text" name="last_name"></li>
                     <li>Email <input type="email" name="email"></li>
@@ -39,16 +39,8 @@
 				
                 </ul>
                 <br/>
-                <input type="submit" value="Regidter">
+                <input type="submit" value="Register">
             </form>
-<!-- my code -->
-			
-<!-- my code -->
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/instagrim">Home</a></li>
-            </ul>
-        </footer>
     </body>
 </html>

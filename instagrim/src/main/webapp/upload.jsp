@@ -18,8 +18,10 @@
         <h2>Your world in Black and White</h2>
         <nav>
             <ul>
-                <li class="nav"><a href="upload.jsp">Upload</a></li>
-                <li class="nav"><a href="/instagrim/Images/majed">Sample Images</a></li>
+                <li class="nav"><a href="SamplePics.jsp">Sample Images</a></li>
+                <li class="nav"><a href="index1.jsp">Home</a></li>
+                <%LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
+                <li class="nav"><a href="/instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
             </ul>
         </nav>
  
@@ -31,18 +33,9 @@
                 <br/>
                 <input type="submit" value="Press"> to upload the file!
             </form>
-            
-<!-- my code -->
            
-            <%LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
-            <a href="/instagrim/Images/<%=lg.getUsername()%>">Your Images</a>
             
-<!-- my code -->
+            
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/instagrim">Home</a></li>
-            </ul>
-        </footer>
     </body>
 </html>

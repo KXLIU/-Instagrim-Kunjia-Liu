@@ -21,7 +21,8 @@
         <nav>
             <ul>
                 
-                <li><a href="/instagrim/Images/majed">Sample Images</a></li>
+                <li><a href="SamplePics.jsp">Sample Images</a></li>
+                <li><a href="index.jsp">Home</a></li>
             </ul>
         </nav>
        
@@ -38,13 +39,5 @@
             </form>
 
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/instagrim">Home</a></li>
-            </ul>
-        </footer>
     </body>
-<!-- my code -->
-		
-<!-- my code -->
 </html>

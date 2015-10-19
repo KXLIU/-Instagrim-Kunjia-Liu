@@ -7,84 +7,24 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
-<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>instagrim</title>
+        <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
         <header>
-            <h1>instagrim ! </h1>
+            <h1>InstaGrim ! </h1>
             <h2>Your world in Black and White</h2>
         </header>
         <nav>
             <ul>
-
-               
-                <li><a href="upload.jsp">Upload</a></li>
-                    <%
-                        
-                        LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-                        if (lg != null) {
-                           
-                            
-                            if (lg.getlogedin()) {
-                    %>
-
-                <li><a href="/instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-           
-<!-- my code -->
-                <li><a href="UploadUserPic.jsp">   UploadYourPhoto</a></li>
-				       
-            
-        <%
-            java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics1");
-            if (lsPics == null) {
-        %>
-        <p>No Pictures found</p>
-        <%
-        } else {
-            Iterator<Pic> iterator;
-            iterator = lsPics.iterator();
-           
-            //while (iterator.hasNext()) {     
-          
-               Pic p = (Pic) iterator.next();
-           
-           %>
-           
-              <li> <a href="/instagrim/Picture/<%=p.getSUUID()%>" ><img src="/instagrim/Thumb1/<%=p.getSUUID()%>"></a></li>
-           <%} %>
-<!-- my code -->  
-			<ul>      
-                  <!-- log out -->
-                 <li><a href="/instagrim/LogOut">LogOut</a></li>
-                    <%}
-                            }else{
-                                %>
-                 <li><a href="register.jsp">Register</a></li>
+                <li><a href="register.jsp">Register</a></li>
                 <li><a href="login.jsp">Login</a></li>
-                <% }%>
+
             </ul>
-        </nav>
-         <%if (lg != null) {%>
-        	
-         Welcome <%=lg.getfirst_name() %> <%=lg.getlast_name() %>  !
-         <br>
-         <%=lg.getemail() %>
-         <br>
-         <a href="/instagrim/Pictures/<%=lg.getUsername()%>">Your photo</a>
-        
-         <%}%>  
-       
-        <footer>
-            <ul>
-                <li class="footer"><a href="/instagrim">Home</a></li>
-                <li>&COPY; Andy C</li>
-            </ul>
-        </footer>
+        </nav>        
     </body>
 </html>

@@ -11,19 +11,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Comment List</title>
+<link rel="stylesheet" type="text/css" href="Styles.css" />
 </head>
 <body>
+    <header>
+        <h1>instagrim ! </h1>
+        <h2>Your world in Black and White</h2>
+    </header>
 
-        <%
-        //HttpSession session=request.getSession();
-        //LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-        //ComModel com = new ComModel();
-        //String uid=request.getParameter("picid");
-      
-        //java.util.UUID pid=java.util.UUID.fromString(uid);
-        %>
-        
-           <%
+    <nav>
+            <ul>
+                <%
+                        
+                        LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+                        if (lg != null) {
+                           
+                            
+                            if (lg.getlogedin()) {
+                    %>
+                <li class="nav"><a href="/instagrim/Images/<%=lg.getUsername()%>">Back To Pic</a></li>
+                <li class="nav"><a href="/instagrim/index1.jsp">Home</a></li>
+            </ul>
+    </nav>
+    
+    <article>
+           <%}}
             java.util.LinkedList<Com> com = (java.util.LinkedList<Com>) request.getAttribute("Comment");
             if (com == null) {
         %>
@@ -43,6 +55,6 @@
        <%} 
        }%> 
        
-        
+</article>       
 </body>
 </html>

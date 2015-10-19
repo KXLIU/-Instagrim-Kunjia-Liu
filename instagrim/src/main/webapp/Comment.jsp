@@ -5,12 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add comment</title>
+<link rel="stylesheet" type="text/css" href="Styles.css" />
 </head>
 <body>
 <header>
         <h1>instagrim ! </h1>
         <h2>Your world in Black and White</h2>
-        </header>
+</header>
                
         <article>
             <h3></h3>

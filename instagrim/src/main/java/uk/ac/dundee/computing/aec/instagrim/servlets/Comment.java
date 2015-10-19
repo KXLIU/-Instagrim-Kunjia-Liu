@@ -113,16 +113,12 @@ public class Comment extends HttpServlet {
         String comment=request.getParameter("Comment");
         java.util.UUID pid=java.util.UUID.fromString(request.getParameter("picid"));
         ComModel com=new ComModel();
-        //System.out.println(comment);
-        //System.out.println(pid);
         com.setCluster(cluster);
         
         com.insertComment(comment , pid);
-        
-       response.sendRedirect("/instagrim/UsersPics.jsp");
-
-                
-    }
+        RequestDispatcher rd = request.getRequestDispatcher("/TransToUP.jsp");
+        rd.forward(request, response);
+        }
     
 
    

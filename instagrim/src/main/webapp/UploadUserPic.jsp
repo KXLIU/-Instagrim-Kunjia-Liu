@@ -36,7 +36,7 @@
       <!--  <meta http-equiv="refresh" content="0; url=photo.jsp"> --> 
        <footer>
             <ul>
-                <li class="footer"><a href="/instagrim">Home</a></li>
+                <li class="footer"><a href="index1.jsp">Home</a></li>
             </ul>
         </footer>
        
